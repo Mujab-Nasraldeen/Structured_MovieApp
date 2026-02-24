@@ -1,6 +1,7 @@
 using Movie.API.Extensions;
 using Movie.Data.Configurations;
 using Movie.Services.Configurations;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,7 @@ builder.Services.AddProjectDataLayer(builder.Configuration);
 builder.Services.AddApplicationServices();
 
 // API Layer
-builder.Services.AddApiLayer();
+builder.Services.AddApiLayer(builder.Configuration);
 
 var app = builder.Build();
 
@@ -19,9 +20,11 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.MapScalarApiReference();
 }
 
 app.UseHttpsRedirection();
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();

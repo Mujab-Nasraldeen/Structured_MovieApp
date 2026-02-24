@@ -5,6 +5,7 @@ using Movie.Services.IService;
 namespace Movie.API.Controllers;
 [Route("api/[controller]")]
 [ApiController]
+//[ApiController, Authorize]
 public class GenresController : ControllerBase
 {
     private readonly IGenreService _genreService;
