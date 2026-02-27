@@ -5,14 +5,9 @@ using Movie.Services.IService;
 namespace Movie.API.Controllers;
 [Route("api/[controller]")]
 [ApiController]
-public class GenresController : ControllerBase
+public class GenresController(IGenreService genreService) : ControllerBase
 {
-    private readonly IGenreService _genreService;
-
-    public GenresController(IGenreService genreService)
-    {
-        _genreService = genreService;
-    }
+    private readonly IGenreService _genreService = genreService;
 
     // GET: api/Genres
     [HttpGet]
