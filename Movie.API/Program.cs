@@ -21,7 +21,7 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
     app.MapScalarApiReference();
-    builder.WebHost.UseUrls("http://0.0.0.0:7070");
+    builder.WebHost.UseUrls("http://0.0.0.0:7072");
 }
 
 app.UseHttpsRedirection();
