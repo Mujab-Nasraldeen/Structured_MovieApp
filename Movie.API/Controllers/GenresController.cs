@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Movie.Data.Models;
 using Movie.Services.IService;
 
 namespace Movie.API.Controllers;
 [Route("api/[controller]")]
-[ApiController]
+[ApiController, Authorize(Roles = "User")]
+//[Authorize(Roles = "User")]
 //[ApiController, Authorize]
 public class GenresController : ControllerBase
 {

@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Movie.Data.DTOs;
 
 namespace Movie.Data.Data;
-public partial class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
+public partial class AppDbContext(DbContextOptions<AppDbContext> options) : IdentityDbContext<ApplicationUser>(options)
 {
     public const string DBConnectionString = ConnectionString.TestString;
 
