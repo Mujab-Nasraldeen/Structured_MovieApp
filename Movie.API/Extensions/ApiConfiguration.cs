@@ -5,6 +5,16 @@ public static class ApiConfiguration
     {
         services.AddControllers();
         services.AddOpenApi();
+        services.AddCors(options =>
+        {
+            options.AddPolicy("MovieAPI", builder =>
+            {
+                builder
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            });
+        });
 
         return services;
     }

@@ -24,6 +24,7 @@ if (app.Environment.IsDevelopment())
     builder.WebHost.UseUrls("http://0.0.0.0:7072");
 }
 
+app.UseCors("AtlasAPI");
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
