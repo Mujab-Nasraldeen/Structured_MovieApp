@@ -16,8 +16,6 @@ public partial class AppDbContext(DbContextOptions<AppDbContext> options) : DbCo
     {
         base.OnModelCreating(builder);
 
-        //_validator.Initialize(builder);
-        //builder.Ignore<ConversionFactor>();
         builder.Entity<ApplicationUser>().ToTable("Users");
         builder.Entity<IdentityRole>().ToTable("Roles");
         builder.Entity<IdentityUserRole<string>>().ToTable("UserRole");
@@ -30,4 +28,4 @@ public partial class AppDbContext(DbContextOptions<AppDbContext> options) : DbCo
     //public DbSet<Genre> Genres { get; set; }
     //public DbSet<Moviee> Movies { get; set; }
 
-    }
+}

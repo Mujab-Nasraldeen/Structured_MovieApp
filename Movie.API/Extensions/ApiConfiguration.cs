@@ -18,6 +18,16 @@ public static class ApiConfiguration
 
         services.AddControllers();
         services.AddOpenApi();
+        services.AddCors(options =>
+        {
+            options.AddPolicy("MovieAPI", builder =>
+            {
+                builder
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            });
+        });
 
         #region This section to enable project to use auth by jwt (Bearer jwtToken) 
         services.AddAuthentication(options =>
