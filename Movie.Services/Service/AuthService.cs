@@ -206,7 +206,7 @@ namespace Movie.Services.Service
                 issuer: _jwt.Issuer,
                 audience: _jwt.Audience,
                 claims: claims,
-                expires: DateTime.UtcNow.AddMinutes(_jwt.DurationInMinutes),
+                expires: DateTime.UtcNow.AddDays(_jwt.DurationInDays),
                 signingCredentials: signingCredentials);
 
             return jwtSecurityToken;
