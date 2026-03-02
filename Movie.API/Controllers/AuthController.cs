@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Movie.Data.DTOs;
 using Movie.Services.IService;
 
 namespace Movie.API.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    [ApiController, AllowAnonymous]
     public class AuthController(IAuthService authService) : ControllerBase
     {
         private readonly IAuthService _authService = authService;
