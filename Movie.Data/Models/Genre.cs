@@ -5,5 +5,5 @@ public class Genre
     public string Name { get; set; } = string.Empty;
 
     // Navigation Property - علاقة One-to-Many مع Movies
-    //public ICollection<Movie> Movies { get; set; } = new List<Movie>();
+    public ICollection<Moviee> Movies { get; set; } = new List<Moviee>();
 }

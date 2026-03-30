@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Movie.Data.Models;
 using Movie.Services.IService;
 
 namespace Movie.API.Controllers;
 [Route("api/[controller]")]
 [ApiController]
+[AllowAnonymous]
 public class MoviesController(IMovieService movieService) : ControllerBase
 {
     private readonly IMovieService _movieService = movieService;
