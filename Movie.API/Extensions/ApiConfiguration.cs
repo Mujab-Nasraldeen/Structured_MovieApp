@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using Movie.Data.Data;
@@ -17,15 +17,23 @@ public static class ApiConfiguration
         #endregion
 
         services.AddControllers();
-        services.AddOpenApi();
+        services.AddOpenApi(options =>
+        {
+            options.AddDocumentTransformer((document, context, cancellationToken) =>
+            {
+                document.Servers = [new() { Url = "/" }];
+                return Task.CompletedTask;
+            });
+        });
         services.AddCors(options =>
         {
-            options.AddPolicy("MovieAPI", builder =>
+            options.AddPolicy("MovieAPI", policy =>
             {
-                builder
-                    .AllowAnyOrigin()
+                policy
+                    .SetIsOriginAllowed(_ => true)
                     .AllowAnyMethod()
-                    .AllowAnyHeader();
+                    .AllowAnyHeader()
+                    .AllowCredentials();
             });
         });
 

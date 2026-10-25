@@ -20,12 +20,16 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
-    app.MapScalarApiReference();
-    //builder.WebHost.UseUrls("http://0.0.0.0:7072");
+    app.MapScalarApiReference(options =>
+    {
+        options.WithTitle("Movie API");
+    });
+    builder.WebHost.UseUrls("http://0.0.0.0:7072");
 }
 
+app.UseRouting();
 app.UseCors("MovieAPI");
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers().RequireAuthorization();
